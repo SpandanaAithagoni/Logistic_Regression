@@ -65,11 +65,12 @@ st.markdown("""
     <p>Predict <b>Customer Churn</b> using <b>Monthly Charges</b></p>
 </div>
 """, unsafe_allow_html=True)
-
-# ===== Load Data =====
+# ===== Load Data (STEP 3: Absolute Path) =====
 @st.cache_data
 def load_data():
-    return pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn.csv")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(BASE_DIR, "WA_Fn-UseC_-Telco-Customer-Churn.csv")
+    return pd.read_csv(csv_path)
 
 df = load_data()
 
@@ -165,3 +166,4 @@ st.markdown(
 )
 
 st.markdown('</div>', unsafe_allow_html=True)
+
